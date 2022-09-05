@@ -25,19 +25,25 @@ type Manifest struct {
 
 // 包基础信息
 type Manifest_package struct {
-	Name          string   `json:"name"`                    // 名字
-	Pkgpath       string   `json:"pkgpath"`                 // 模块的导入路径
-	Version       string   `json:"version"`                 // 版本
-	Authors       []string `json:"authors,omitempty"`       // 作者
-	Description   string   `json:"description,omitempty"`   // 一句话简介
-	Documentation string   `json:"documentation,omitempty"` // 包文档链接
-	Readme        string   `json:"readme,omitempty"`        // README 文件 (Markdown 格式)
-	Homepage      string   `json:"homepage,omitempty"`      // 主页
-	Repository    string   `json:"repository,omitempty"`    // 代码仓库
-	License       string   `json:"license,omitempty"`       // 版权
-	LicenseFile   string   `json:"license_file,omitempty"`  // 版权文件
-	Keywords      []string `json:"keywords,omitempty"`      // 关键字
-	Categories    []string `json:"categories,omitempty"`    // 领域分类
+	Name          string                        `json:"name"`                    // 名字
+	Pkgpath       string                        `json:"pkgpath"`                 // 模块的导入路径
+	Version       string                        `json:"version"`                 // 版本
+	Authors       []string                      `json:"authors,omitempty"`       // 作者
+	Description   string                        `json:"description,omitempty"`   // 一句话简介
+	Documentation string                        `json:"documentation,omitempty"` // 包文档链接
+	Readme        string                        `json:"readme,omitempty"`        // README 文件 (Markdown 格式)
+	Homepage      string                        `json:"homepage,omitempty"`      // 主页
+	Repository    string                        `json:"repository,omitempty"`    // 代码仓库
+	License       string                        `json:"license,omitempty"`       // 版权
+	LicenseFile   string                        `json:"license_file,omitempty"`  // 版权文件
+	Keywords      []string                      `json:"keywords,omitempty"`      // 关键字
+	Categories    []string                      `json:"categories,omitempty"`    // 领域分类
+	Dependencies  []Manifest_package_dependency `json:"dependencies,omitempty"`
+}
+
+type Manifest_package_dependency struct {
+	Path    string  `json:"path,omitempty"`
+	Version float32 `json:"version,omitempty"`
 }
 
 func (p *Manifest) Clone() *Manifest {
